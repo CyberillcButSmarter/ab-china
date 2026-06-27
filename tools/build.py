@@ -81,6 +81,16 @@ def main():
             shutil.copy2(os.path.join(web, n), os.path.join(DST, n))
         print(f"overlaid web/ entry files: {', '.join(sorted(os.listdir(web)))}")
 
+    # Generate the English dictionary script (window.__AB_I18N) consumed by the
+    # English build (index-en.html + translation.js).
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    dict_path = os.path.join(repo, "translations", "zh-en.json")
+    if os.path.isfile(dict_path):
+        d = json.load(open(dict_path, encoding="utf-8"))
+        with open(os.path.join(DST, "i18n-dict.js"), "w", encoding="utf-8") as f:
+            f.write("window.__AB_I18N=" + json.dumps(d, ensure_ascii=False) + ";")
+        print(f"wrote i18n-dict.js ({len(d)} entries)")
+
     # Identity version.json so Laya ResourceVersion (FILENAME_VERSION mode) maps
     # every runtime-loaded asset path to itself instead of to a now-dead hash.
     identity = {k: k for k in manifest.keys()}
