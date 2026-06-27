@@ -1,0 +1,8 @@
+services:
+  ab-china:
+    build: .
+    image: ab-china:latest
+    container_name: ab-china
+    restart: unless-stopped
+    ports:
+      - "8767:80"
