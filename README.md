@@ -6,7 +6,18 @@ A de-hooked, browser-runnable build of the **Angry Birds China** HTML5 mini-prog
 browser as-is. This repo turns it into a static site that any web server (nginx)
 can host, and ships a Docker/Dockge stack for it.
 
-Sourced from an Internet Archive dump (`hwab.manhuang.org`). Thanks to h_k_qq for the pointer.
+**`public/` is committed and playable as-is** — you only need the original files
+below if you want to regenerate it from scratch.
+
+### Source & credits
+
+- **Original CDN dump:** https://archive.org/details/angrybirdsmp — the official
+  and obscure mini-program builds of AB China by Talkweb (multiple folders, one per
+  Chinese SNS platform). This repo restores the **`wx/` (WeChat)** build, which has
+  the most content. Game site: `hwab.manhuang.org`.
+- Thanks to **h_k_qq** for surfacing the game.
+- Angry Birds is © Rovio / Talkweb. This is a non-commercial preservation/restoration
+  of an otherwise unplayable, delisted release.
 
 ## What had to be fixed
 
@@ -35,8 +46,11 @@ deploy-ready).
 
 ## Rebuilding from the original dump
 
+Download the dump from [archive.org/details/angrybirdsmp](https://archive.org/details/angrybirdsmp)
+and point the build at its `wx/release` folder:
+
 ```bash
-python3 tools/build.py /path/to/ab/wx/release   # defaults to ~/Downloads/downloaded_files/ab/wx/release
+python3 tools/build.py /path/to/ab/wx/release
 ```
 
 Regenerates `public/` from the raw dump. Edit overlay files in `web/` (entry HTML,
