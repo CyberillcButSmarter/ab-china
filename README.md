@@ -6,6 +6,24 @@ A de-hooked, browser-runnable build of the **Angry Birds China** HTML5 mini-prog
 browser as-is. This repo turns it into a static site that any web server (nginx)
 can host, and ships a Docker/Dockge stack for it.
 
+### Play it
+
+- **Chinese (original):** https://ab-china.vercel.app/
+- **English:** https://ab-china.vercel.app/en
+
+## How this was made
+
+This is a preservation project. The original is a delisted Chinese WeChat/SNS
+mini-program that couldn't run outside those apps — no HTML entry, WeChat-only API
+hooks, and content-hashed assets with no mapping layer. I tracked down the CDN dump,
+worked out what was broken, and got it running as a plain static site, then deployed
+it (self-hosted Docker/Dockge + Vercel) and tested every step in a real browser.
+
+I used an AI assistant as a coding tool for the tedious implementation — the `wx`
+API shim that neutralizes the WeChat hooks, the asset-mapping build script, and the
+runtime translation layer. I directed the work and verified it all myself. It's
+fully open-source, so everything it does is right here in the repo to read.
+
 **`public/` is committed and playable as-is** — you only need the original files
 below if you want to regenerate it from scratch.
 
