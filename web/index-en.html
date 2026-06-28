@@ -42,5 +42,11 @@
   <!-- Translation hook (patches FairyGUI text) + desktop scaling/audio fixes -->
   <script type="text/javascript" src="translation.js"></script>
   <script type="text/javascript" src="desktop-fixes.js"></script>
+
+  <!-- Vercel Web Analytics -->
+  <script type="module">
+    import { inject } from '/@vercel/analytics';
+    inject();
+  </script>
 </body>
 </html>
